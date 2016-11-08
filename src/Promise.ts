@@ -4,6 +4,7 @@ import { queueMicroTask } from './support/queue';
 import { forOf, Iterable } from './iterator';
 import './Symbol';
 import { hasClass } from './support/decorators';
+import has from 'dojo-has/has';
 
 /**
  * Executor is the interface for functions used to initialize a Promise.
@@ -376,3 +377,5 @@ export default class Promise<T> implements Thenable<T> {
 		throw new Error();
 	}
 }
+
+global.Promise = has('es6-promise') ? global.Promise : Shim.Promise;
