@@ -210,7 +210,7 @@ export interface From {
 	 * @param thisArg The execution context for the map function
 	 * @return The new Array
 	 */
-	<T, U>(source: ArrayLike<T> | Iterable<T>, mapFunction: MapCallback<T, U>, thisArg?: any): Array<U>;
+	<T, U>(source: ArrayLike<T> | IterableIterator<T>, mapFunction: MapCallback<T, U>, thisArg?: any): Array<U>;
 
 	/**
 	 * The Array.from() method creates a new Array instance from an array-like or iterable object.
@@ -218,7 +218,7 @@ export interface From {
 	 * @param source An array-like or iterable object to convert to an array
 	 * @return The new Array
 	 */
-	<T>(source: ArrayLike<T> | Iterable<T>): Array<T>;
+	<T>(source: ArrayLike<T> | IterableIterator<T>): Array<T>;
 }
 
 export const from: From = has('es6-array-from')
