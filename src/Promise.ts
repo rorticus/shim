@@ -4,7 +4,7 @@ import { queueMicroTask } from './support/queue';
 import { forOf, Iterable } from './iterator';
 import './Symbol';
 import { hasClass } from './support/decorators';
-import has from 'dojo-has/has';
+import has from './support/has';
 
 /**
  * Executor is the interface for functions used to initialize a Promise.

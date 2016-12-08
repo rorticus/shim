@@ -7,7 +7,7 @@ import 'src/Symbol';
 
 function mixin<T extends { [key: string]: any }, U extends { [key: string]: any }>(destination: T, source: U): T & U {
 	for (let key in source) {
-		destination[key] = source[key];
+		(<any> destination)[key] = source[key];
 	}
 	return <any> destination;
 }
