@@ -25,7 +25,10 @@ export const loader = {
 			{ name: 'tests', location: '_build/tests' },
 			{ name: 'dojo', location: 'node_modules/intern/node_modules/dojo' },
 			{ name: 'grunt-dojo2', location: 'node_modules/grunt-dojo2'},
-			{ name: '@dojo', location: 'node_modules/@dojo' }
+			{ name: '@dojo', location: 'node_modules/@dojo' },
+			{ name: 'tslib', location: 'node_modules/tslib', main: 'tslib' },
+			{ name: 'pepjs', location: 'node_modules/pepjs/dist', main: 'pep' },
+			{ name: 'intersection-observer', location: 'node_modules/intersection-observer', main: 'intersection-observer' }
 		]
 	}
 };

@@ -1,3 +1,5 @@
+import './support/tslib';
+
 import * as array from './array';
 import * as iterator from './iterator';
 import Map from './Map';
@@ -8,6 +10,18 @@ import Set from './Set';
 import * as string from './string';
 import Symbol from './Symbol';
 import WeakMap from './WeakMap';
+
+`!has('es6-promise')`;
+import './Promise';
+
+`!has('es6-symbol')`;
+import './Symbol';
+import has from '@dojo/has/has';
+
+if (has('host-browser')) {
+	require('pepjs');
+	require('intersection-observer');
+}
 
 export {
 	array,
