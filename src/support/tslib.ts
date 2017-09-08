@@ -1,5 +1,7 @@
 import global from '../global';
 
+import 'tslib';
+
 global.__values = function (o: any) {
 	let m = typeof Symbol === 'function' && o[ Symbol.iterator ], i = 0;
 	if (m) {
@@ -37,5 +39,3 @@ global.__values = function (o: any) {
 		}
 	};
 };
-
-import 'tslib';

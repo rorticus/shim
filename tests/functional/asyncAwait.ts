@@ -5,7 +5,7 @@ import pollUntil from '@theintern/leadfoot/helpers/pollUntil';
 registerSuite('asyncAwait', {
 	'Async/Await with Bluebird'() {
 		return this.remote
-			.get((<any> require).toUrl('./bluebird.html'))
+			.get('/_build/tests/functional/bluebird.html')
 			.then(pollUntil(function () {
 				return (<any> window).callbackValue;
 			}, undefined, 5000), undefined)
@@ -16,7 +16,7 @@ registerSuite('asyncAwait', {
 
 	'Async/Await with Dojo'() {
 		return this.remote
-			.get((<any> require).toUrl('./asyncAwait.html'))
+			.get('/_build/tests/functional/asyncAwait.html')
 			.then(pollUntil(function () {
 				return (<any> window).callbackValue;
 			}, undefined, 5000), undefined)
@@ -27,7 +27,7 @@ registerSuite('asyncAwait', {
 
 	'Async/Await with Bluebird and Dojo'() {
 		return this.remote
-			.get((<any> require).toUrl('./bluebirdAndDojo.html'))
+			.get('/_build/tests/functional/bluebirdAndDojo.html')
 			.then(pollUntil(function () {
 				return (<any> window).callbackValue;
 			}, undefined, 5000), undefined)

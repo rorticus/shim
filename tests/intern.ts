@@ -14,30 +14,26 @@ export const capabilities = {
 // Maximum number of simultaneous integration tests that should be executed on the remote WebDriver service
 export const maxConcurrency = 5;
 
-// Configuration options for the module loader; any AMD configuration options supported by the specified AMD loader
-// can be used here
-export const loader = {
-	script: 'dojo2',
-	options: {
-		// Packages that should be registered with the loader in each testing environment
-		packages: [
-			{ name: 'src', location: '_build/src' },
-			{ name: 'tests', location: '_build/tests' },
-			{ name: 'dojo', location: 'node_modules/intern/node_modules/dojo' },
-			{ name: 'grunt-dojo2', location: 'node_modules/grunt-dojo2'},
-			{ name: '@dojo', location: 'node_modules/@dojo' },
-			{ name: 'tslib', location: 'node_modules/tslib', main: 'tslib' },
-			{ name: 'pepjs', location: 'node_modules/pepjs/dist', main: 'pep' },
-			{ name: 'intersection-observer', location: 'node_modules/intersection-observer', main: 'intersection-observer' }
-		]
-	}
+export const browser = {
+	require: [
+		'./node_modules/@dojo/loader/loader.js',
+		'./_build/src/util/amd.js',
+		'./_build/tests/loader.js',
+		'./_build/src/main.js'
+	]
+};
+
+export const node = {
+	require: [
+		'./_build/src/main.js'
+	]
 };
 
 // Non-functional test suite(s) to run in each browser
-export const suites = ['src/main', 'tests/unit/all'];
+export const suites = ['_build/tests/unit/all.js'];
 
 // Functional test suite(s) to run in each browser once non-functional tests are completed
-export const functionalSuites = 'tests/functional/all';
+export const functionalSuites = '_build/tests/functional/all';
 
 // A regular expression matching URLs to files that should not be included in code coverage analysis
 export const coverage = [
