@@ -15,22 +15,11 @@ export const capabilities = {
 export const maxConcurrency = 5;
 
 export const browser = {
-	require: [
-		'./node_modules/@dojo/loader/loader.js',
-		'./_build/src/util/amd.js',
-		'./_build/tests/loader.js',
-		'./_build/src/main.js'
-	]
-};
-
-export const node = {
-	require: [
-		'./_build/src/main.js'
-	]
+	loader: './_build/tests/loader.js'
 };
 
 // Non-functional test suite(s) to run in each browser
-export const suites = ['_build/tests/unit/all.js'];
+export const suites = ['_build/src/main.js', '_build/tests/unit/all.js'];
 
 // Functional test suite(s) to run in each browser once non-functional tests are completed
 export const functionalSuites = '_build/tests/functional/all';

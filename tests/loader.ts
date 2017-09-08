@@ -1,7 +1,16 @@
-(<any> require).config(shimAmdDependencies({
-	packages: [
-		{ name: 'src', location: '_build/src' },
-		{ name: 'tests', location: '_build/tests' },
-		{ name: 'dojo', location: 'node_modules/intern/node_modules/dojo' }
-	]
-}));
+intern.registerLoader((options) => {
+	return intern.loadScript('node_modules/@dojo/loader/loader.js')
+		.then(() => intern.loadScript('./_build/src/util/amd.js'))
+		.then(() => {
+			(<any> require).config(shimAmdDependencies({
+				baseUrl: options.baseUrl || intern.config.basePath,
+				packages: []
+			}));
+
+			return (modules: string[]) => {
+				return new Promise<void>((resolve, reject) => {
+					(<any> require)(modules, () => resolve());
+				});
+			};
+		});
+});
