@@ -5,6 +5,7 @@ function addIfNotPresent(packages: any[], newPackage: any) {
 
 	packages.push(newPackage);
 }
+
 // tslint:disable-next-line
 function shimAmdDependencies(config: any) {
 	let packages = config.packages || [];
@@ -25,6 +26,11 @@ function shimAmdDependencies(config: any) {
 		name: 'intersection-observer',
 		location: 'node_modules/intersection-observer',
 		main: 'intersection-observer'
+	});
+
+	addIfNotPresent(packages, {
+		name: '@dojo',
+		location: 'node_modules/@dojo'
 	});
 
 	config.packages = packages;
