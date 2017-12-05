@@ -18,7 +18,13 @@
   },
   "scripts": {
     "prepublish": "grunt peerDepInstall",
-    "test": "grunt test"
+    "test": "npm run umd && intern",
+    "test:local": "npm run umd && intern config=intern.json@local",
+    "umd": "tsc -p .",
+    "esm": "tsc -p ./node_modules/@dojo/scripts/tsconfig.esm.json",
+    "clean": "rimraf dist",
+    "dist": "npm run clean && npm run umd && npm run esm && npm run package",
+    "package": "node node_modules/@dojo/scripts/package.js"
   },
   "peerDependencies": {
     "@dojo/has": "~0.1.1"
@@ -31,6 +37,7 @@
     "grunt": "~1.0.1",
     "grunt-dojo2": "latest",
     "intern": "~4.1.0",
+    "rimraf": "^2.6.2",
     "typescript": "~2.6.1"
   },
   "dependencies": {

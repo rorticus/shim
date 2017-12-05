@@ -10,21 +10,27 @@
 		{ "browserName": "node" }
 	],
 
+	"node": {
+		"reporters": [
+			{ "name": "runner", "options": { "hideSkipped": true, "hidePassed": true } }
+		]
+	},
+
 	"suites": [
-		"./_build/src/main.js",
-		"./_build/tests/unit/all.js"
+		"./dist/umd/src/main.js",
+		"./dist/umd/tests/unit/all.js"
 	],
 
 	"functionalSuites": [
-		"./_build/tests/functional/all.js"
+		"./dist/umd/tests/functional/all.js"
 	],
 
 	"browser": {
-		"loader": "./_build/tests/loader.js"
+		"loader": "./dist/umd/tests/loader.js"
 	},
 
 	"coverage": [
-		"./_build/src/**/*.js"
+		"./dist/umd/src/**/*.js"
 	],
 
 	"configs": {
