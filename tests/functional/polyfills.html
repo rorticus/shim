@@ -7,14 +7,14 @@
 
 <body>
 <script src="../../src/util/amd.js"></script>
-<script src="../../../node_modules/@dojo/loader/loader.js"></script>
+<script src="../../../../node_modules/@dojo/loader/loader.js"></script>
 <script>
 	require.config(shimAmdDependencies({
-		baseUrl: '../../../'
+		baseUrl: '../../../../'
 	}));
 	require([
-		'_build/src/main',
-		'_build/src/browser'
+		'dist/umd/src/main',
+		'dist/umd/src/browser'
 	], function() {
 		window.results = {
 			pointerEvents: typeof(PointerEvent) !== 'undefined',
