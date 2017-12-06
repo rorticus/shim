@@ -17,15 +17,18 @@
     "url": "https://github.com/dojo/shim.git"
   },
   "scripts": {
-    "prepublish": "grunt peerDepInstall",
+    "prepublish": "node node_modules/@dojo/scripts/install-peer-deps.js",
     "lint": "tslint \"src/**/*.ts\" \"tests/**/*.ts\"",
     "test": "npm run build:umd && intern",
-    "test:local": "npm run build:umd && intern config=intern.json@local",
+    "test:local": "intern config=intern.json@local",
+    "test:browserstack": "intern config=intern.json@browserstack",
+    "test:saucelabs": "intern config=intern.json@saucelabs",
     "build:umd": "npm run lint && tsc -p . && copyfiles -u 1 \"tests/**/*.html\" dist/umd/tests",
     "build:esm": "npm run lint && tsc -p ./node_modules/@dojo/scripts/tsconfig.esm.json && copyfiles -u 1 \"tests/**/*.html\" dist/esm/tests",
     "clean": "rimraf dist",
     "dist": "npm run lint && npm run clean && npm run build:umd && npm run build:esm && npm run package",
-    "package": "node node_modules/@dojo/scripts/package.js"
+    "pre-package": "node node_modules/@dojo/scripts/package.js",
+    "package": ""
   },
   "peerDependencies": {
     "@dojo/has": "~0.1.1"
