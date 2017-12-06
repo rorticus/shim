@@ -23,12 +23,13 @@
     "test:local": "intern config=intern.json@local",
     "test:browserstack": "intern config=intern.json@browserstack",
     "test:saucelabs": "intern config=intern.json@saucelabs",
-    "build:umd": "npm run lint && tsc -p . && copyfiles -u 1 \"tests/**/*.html\" dist/umd/tests",
-    "build:esm": "npm run lint && tsc -p ./node_modules/@dojo/scripts/tsconfig.esm.json && copyfiles -u 1 \"tests/**/*.html\" dist/esm/tests",
+    "build:static": "copyfiles \"tests/**/*.html\" \"src/**/*.d.ts\"",
+    "build:umd": "tsc -p . && npm run build:static -- dist/umd",
+    "build:esm": "tsc -p ./node_modules/@dojo/scripts/tsconfig.esm.json && npm run build:static -- dist/esm",
     "clean": "rimraf dist",
     "dist": "npm run lint && npm run clean && npm run build:umd && npm run build:esm && npm run package",
-    "pre-package": "node node_modules/@dojo/scripts/package.js",
-    "package": ""
+    "package": "node node_modules/@dojo/scripts/package.js",
+    "release": "npm run can-publish && npm run repo-clean-check && npm run dist && npm run package && node node_modules/@dojo/scripts/release.js"
   },
   "peerDependencies": {
     "@dojo/has": "~0.1.1"
