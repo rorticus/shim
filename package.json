@@ -29,7 +29,7 @@
     "clean": "rimraf dist",
     "dist": "npm run lint && npm run clean && npm run build:umd && npm run build:esm && npm run package",
     "package": "node node_modules/@dojo/scripts/package.js",
-    "release": "npm run can-publish && npm run repo-clean-check && npm run dist && npm run package && node node_modules/@dojo/scripts/release.js"
+    "release": "node node_modules/@dojo/scripts/can-publish-check.js && node node_modules/@dojo/scripts/repo-is-clean-check.js && npm run dist && npm run package && node node_modules/@dojo/scripts/release.js"
   },
   "peerDependencies": {
     "@dojo/has": "~0.1.1"
