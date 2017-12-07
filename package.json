@@ -25,7 +25,7 @@
     "test:saucelabs": "intern config=intern.json@saucelabs",
     "build:static": "copyfiles \"tests/**/*.html\" \"src/**/*.d.ts\"",
     "build:umd": "tsc -p . && npm run build:static -- dist/umd",
-    "build:esm": "tsc -p ./node_modules/@dojo/scripts/tsconfig.esm.json && npm run build:static -- dist/esm",
+    "build:esm": "tsc -p ./node_modules/@dojo/scripts/tsconfig/tsconfig.esm.json && npm run build:static -- dist/esm",
     "clean": "rimraf dist",
     "dist": "npm run lint && npm run clean && npm run build:umd && npm run build:esm && npm run package",
     "package": "dojo-package",
