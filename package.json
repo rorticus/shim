@@ -17,8 +17,8 @@
     "url": "https://github.com/dojo/shim.git"
   },
   "scripts": {
-    "prepublish": "node node_modules/@dojo/scripts/install-peer-deps.js",
-    "lint": "tslint \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "prepublish": "dojo-install-peer-deps",
+    "lint": "tslint -p .",
     "test": "npm run build:umd && intern",
     "test:local": "intern config=intern.json@local",
     "test:browserstack": "intern config=intern.json@browserstack",
@@ -28,8 +28,8 @@
     "build:esm": "tsc -p ./node_modules/@dojo/scripts/tsconfig.esm.json && npm run build:static -- dist/esm",
     "clean": "rimraf dist",
     "dist": "npm run lint && npm run clean && npm run build:umd && npm run build:esm && npm run package",
-    "package": "node node_modules/@dojo/scripts/package.js",
-    "release": "node node_modules/@dojo/scripts/can-publish-check.js && node node_modules/@dojo/scripts/repo-is-clean-check.js && npm run dist && npm run package && node node_modules/@dojo/scripts/release.js"
+    "package": "dojo-package",
+    "release": "dojo-can-publish-check && dojo-repo-is-clean-check && npm run dist && npm run package && dojo-release"
   },
   "peerDependencies": {
     "@dojo/has": "~0.1.1"
@@ -40,10 +40,9 @@
     "@types/grunt": "~0.4.0",
     "@types/node": "~6.0.49",
     "copyfiles": "^1.2.0",
-    "grunt": "~1.0.1",
-    "grunt-dojo2": "latest",
     "intern": "~4.1.0",
     "rimraf": "^2.6.2",
+    "tslint": "^5.8.0",
     "typescript": "~2.6.1"
   },
   "dependencies": {
